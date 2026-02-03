@@ -1,4 +1,4 @@
-import moment from "moment";
+import * as moment from "moment";
 import { DATE_UNIT_TYPES } from "./constants";
 
 export function getCurrentYear() {
