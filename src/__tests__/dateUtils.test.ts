@@ -102,6 +102,29 @@ describe("Date Utils", () => {
       expect(isDateBefore(date,compareDate)).toBe(false);
     })
   })
+
+  describe("isSameDay", () => {
+    it("should return true if the date is the same", () => {
+      const date = new Date(2024, 1, 1);
+      const compareDate = new Date(2024, 1, 1);
+      expect(isSameDay(date, compareDate)).toBe(true);
+    })
+    it("should return false if the years are different", () => {
+      const date = new Date(2026, 1, 1);
+      const compareDate = new Date(2024, 1, 1);
+      expect(isSameDay(date, compareDate)).toBe(false);
+    })
+    it("should return false if the months are different", () => {
+      const date = new Date(2024, 2, 1);
+      const compareDate = new Date(2024, 1, 1);
+      expect(isSameDay(date, compareDate)).toBe(false);
+    })
+    it("should return false if the days are different", () => {
+      const date = new Date(2024, 1, 2);
+      const compareDate = new Date(2024, 1, 1);
+      expect(isSameDay(date, compareDate)).toBe(false);
+    })
+  })
 });
 
 
