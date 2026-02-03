@@ -83,6 +83,25 @@ describe("Date Utils", () => {
 
     })
   })
+
+  describe("isDateBefore", () => {
+    it("should return true when the date is before the comparison ", () => {
+      const date = new Date(2024, 0, 1);
+      const compareDate = new Date(2024, 0, 5);
+      expect(isDateBefore(date,compareDate)).toBe(true);
+    })
+    it("should return false when the date is before the comparison and is the same day", () => {
+      const date = new Date(2024, 0, 1);
+      const compareDate = new Date(2024, 0, 1);
+      expect(isDateBefore(date,compareDate)).toBe(false);
+    })
+
+    it("should return false when the date is after the comparison", () => {
+      const date = new Date(2024, 0, 5);
+      const compareDate = new Date(2024, 0, 1);
+      expect(isDateBefore(date,compareDate)).toBe(false);
+    })
+  })
 });
 
 
