@@ -125,6 +125,27 @@ describe("Date Utils", () => {
       expect(isSameDay(date, compareDate)).toBe(false);
     })
   })
+
+  describe("getHolidays", () => {
+    it("should return holidays with correct year", async () => {
+      const holidays = await getHolidays(2025);
+
+      holidays.forEach((holiday) => {
+        expect(holiday.getFullYear()).toBe(2025);
+      });
+    });
+
+    //TODO ahuga með þetta async import og hvort ég eigi að hafa testin svona ströng.
+    it("should return all holidays", async () => {
+      const holidays = await getHolidays(2025);
+      expect(holidays).toHaveLength(3);
+      expect(holidays[0]).toEqual(new Date(2024, 0, 1));   // New Year's Day
+      expect(holidays[1]).toEqual(new Date(2024, 11, 25)); // Christmas
+      expect(holidays[2]).toEqual(new Date(2024, 11, 31)); // New Year's Eve
+    })
+
+
+  })
 });
 
 
