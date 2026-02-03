@@ -57,6 +57,32 @@ describe("Date Utils", () => {
       expect(() => add(date, null)).toThrow('Invalid amount provided');
     });
   })
+
+  describe("isWithinRange", () => {
+
+    it("should return true when the range is in range", () => {
+      const date = new Date(2024, 0, 3);
+      const fromDate = new Date(2024, 0, 1);
+      const toDate = new Date(2024, 0, 5);
+      expect(isWithinRange(date, fromDate, toDate)).toBe(true)
+    })
+
+    it("should return false when the range is in range", () => {
+      const date = new Date(2024, 0, 1);
+      const fromDate = new Date(2024, 0, 3);
+      const toDate = new Date(2024, 0, 5);
+      expect(isWithinRange(date, fromDate, toDate)).toBe(false);
+    })
+
+    it("should throw error when fromDate is after toDate", () => {
+      const date = new Date(2024, 0, 1);
+      const fromDate = new Date(2024, 0, 6);
+      const toDate = new Date(2024, 0, 5);
+
+      expect(() => isWithinRange(date,fromDate,toDate)).toThrow();
+
+    })
+  })
 });
 
 
