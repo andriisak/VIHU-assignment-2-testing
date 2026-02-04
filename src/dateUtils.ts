@@ -1,11 +1,11 @@
 import moment from "moment";
 import { DATE_UNIT_TYPES } from "./constants";
 
-export function getCurrentYear() {
+export function getCurrentYear(): number {
   return moment().year();
 }
 
-export function add(date, amount, type = DATE_UNIT_TYPES.DAYS) {
+export function add(date: Date, amount: number, type: DATE_UNIT_TYPES = DATE_UNIT_TYPES.DAYS): Date {
   if (!(date instanceof Date) || isNaN(date.getTime())) {
     throw new Error('Invalid date provided');
   }
