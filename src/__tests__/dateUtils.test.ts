@@ -135,7 +135,6 @@ describe("Date Utils", () => {
       });
     });
 
-    //TODO ahuga með þetta async import og hvort ég eigi að hafa testin svona ströng.
     it("should return all holidays", async () => {
       const holidays = await getHolidays(2025);
       expect(holidays).toHaveLength(3);
