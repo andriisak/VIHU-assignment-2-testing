@@ -139,9 +139,9 @@ describe("Date Utils", () => {
     it("should return all holidays", async () => {
       const holidays = await getHolidays(2025);
       expect(holidays).toHaveLength(3);
-      expect(holidays[0]).toEqual(new Date(2024, 0, 1));   // New Year's Day
-      expect(holidays[1]).toEqual(new Date(2024, 11, 25)); // Christmas
-      expect(holidays[2]).toEqual(new Date(2024, 11, 31)); // New Year's Eve
+      expect(holidays[0]).toEqual(new Date(2024, 0, 1));
+      expect(holidays[1]).toEqual(new Date(2024, 11, 25));
+      expect(holidays[2]).toEqual(new Date(2024, 11, 31));
     })
 
 
