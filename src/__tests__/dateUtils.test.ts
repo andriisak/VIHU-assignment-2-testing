@@ -1,27 +1,20 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { describe, it, expect, vi } from 'vitest';
 import {getCurrentYear, add, isWithinRange, isDateBefore, isSameDay, getHolidays, isHoliday} from "../dateUtils";
 import { DATE_UNIT_TYPES } from "../constants";
 
 describe("Date Utils", () => {
 
   describe("getCurrentYear", () => {
-    beforeEach(() => {
-      vi.useFakeTimers();
-      vi.setSystemTime(new Date(2024, 5, 15)); // June 15, 2024
-    });
-
-    afterEach(() => {
-      vi.useRealTimers();
-    });
-
     it("should return the current year", () => {
+      vi.spyOn(Date, 'now').mockReturnValue(new Date(2024, 5, 15).getTime());
       expect(getCurrentYear()).toBe(2024);
+      vi.restoreAllMocks();
     });
   });
 
   describe("add", () => {
     it("should add days by default", () => {
-      const date = new Date(2024, 0, 1); // Jan 1, 2024
+      const date = new Date(2024, 0, 1);
       const result = add(date, 5);
       expect(result.getDate()).toBe(6);
       expect(result.getMonth()).toBe(0);
@@ -154,7 +147,7 @@ describe("Date Utils", () => {
 
   })
 
-  describe(isHoliday, () => {
+  describe("isHoliday", () => {
 
     it("should return true if a date is a holiday", async () => {
       const holyday_1 = new Date(2024, 0, 1);
