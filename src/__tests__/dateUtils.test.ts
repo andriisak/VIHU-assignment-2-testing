@@ -1,15 +1,23 @@
-import { describe, it, expect } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import {getCurrentYear, add, isWithinRange, isDateBefore, isSameDay, getHolidays, isHoliday} from "../dateUtils";
 import { DATE_UNIT_TYPES } from "../constants";
 
 describe("Date Utils", () => {
 
   describe("getCurrentYear", () => {
-    it("should return the current year", () => {
-      const currentYear = new Date().getFullYear();
-      expect(getCurrentYear()).toBe(currentYear);
+    beforeEach(() => {
+      vi.useFakeTimers();
+      vi.setSystemTime(new Date(2024, 5, 15)); // June 15, 2024
     });
-  })
+
+    afterEach(() => {
+      vi.useRealTimers();
+    });
+
+    it("should return the current year", () => {
+      expect(getCurrentYear()).toBe(2024);
+    });
+  });
 
   describe("add", () => {
     it("should add days by default", () => {
