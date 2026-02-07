@@ -2,7 +2,7 @@ import { getYear, add as addFn, isAfter, isWithinInterval, isBefore, isSameDay a
 import { DATE_UNIT_TYPES } from "./constants";
 
 export function getCurrentYear(): number {
-  return getYear(new Date());
+  return getYear(Date.now());
 }
 
 export function add(date: Date, amount: number, type: DATE_UNIT_TYPES = DATE_UNIT_TYPES.DAYS): Date {
@@ -16,7 +16,7 @@ export function add(date: Date, amount: number, type: DATE_UNIT_TYPES = DATE_UNI
 }
 
 export function isWithinRange(date: Date, from: Date, to: Date): boolean {
-  if (isAfter(date, from)) {
+  if (isAfter(from, to)) {
     throw new Error('Invalid range: from date must be before to date');
   }
   return isWithinInterval(date, {start: from, end: to});
