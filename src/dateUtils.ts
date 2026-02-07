@@ -26,7 +26,7 @@ export function isDateBefore(date: Date, compareDate: Date): boolean {
   return moment(date).isBefore(compareDate);
 }
 
-export function isSameDay(date, compareDate) {
+export function isSameDay(date: Date, compareDate: Date): boolean {
   return moment(date).isSame(compareDate, 'day');
 }
 
