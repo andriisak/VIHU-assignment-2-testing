@@ -27,7 +27,7 @@ export function isDateBefore(date: Date, compareDate: Date): boolean {
 }
 
 export function isSameDay(date: Date, compareDate: Date): boolean {
-  return moment(date).isSame(compareDate, 'day');
+  return isSameDayFn(date, compareDate);
 }
 
 // Simulates fetching holidays from an API
