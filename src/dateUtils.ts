@@ -1,8 +1,8 @@
-import moment from "moment";
+import { getYear, add as addFn, isAfter, isWithinInterval, isBefore, isSameDay as isSameDayFn } from "date-fns";
 import { DATE_UNIT_TYPES } from "./constants";
 
 export function getCurrentYear(): number {
-  return moment().year();
+  return getYear(new Date());
 }
 
 export function add(date: Date, amount: number, type: DATE_UNIT_TYPES = DATE_UNIT_TYPES.DAYS): Date {
@@ -12,7 +12,7 @@ export function add(date: Date, amount: number, type: DATE_UNIT_TYPES = DATE_UNI
   if (typeof amount !== 'number' || isNaN(amount)) {
     throw new Error('Invalid amount provided');
   }
-  return moment(date).add(amount, type).toDate();
+  return addFn(date, { [type]: amount });
 }
 
 export function isWithinRange(date: Date, from: Date, to: Date): boolean {
