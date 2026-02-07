@@ -43,7 +43,7 @@ export async function getHolidays(year: number): Promise<Date[]> {
   });
 }
 
-export async function isHoliday(date) {
+export async function isHoliday(date: Date): Promise<boolean> {
   const holidays = await getHolidays(date.getFullYear());
   return holidays.some(holiday => isSameDay(date, holiday));
 }
