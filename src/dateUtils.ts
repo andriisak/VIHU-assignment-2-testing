@@ -31,8 +31,8 @@ export function isSameDay(date: Date, compareDate: Date): boolean {
 }
 
 // Simulates fetching holidays from an API
-export async function getHolidays(year) {
-  return new Promise((resolve) => {
+export async function getHolidays(year: number): Promise<Date[]> {
+  return new Promise<Date[]>((resolve) => {
     setTimeout(() => {
       resolve([
         new Date(year, 0, 1),   // New Year's Day
