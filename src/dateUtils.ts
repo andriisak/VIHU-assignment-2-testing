@@ -23,7 +23,7 @@ export function isWithinRange(date: Date, from: Date, to: Date): boolean {
 }
 
 export function isDateBefore(date: Date, compareDate: Date): boolean {
-  return moment(date).isBefore(compareDate);
+  return isBefore(date, compareDate);
 }
 
 export function isSameDay(date: Date, compareDate: Date): boolean {
