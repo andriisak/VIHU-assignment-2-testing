@@ -33,6 +33,18 @@ describe("Date Utils", () => {
       expect(result.getMonth()).toBe(3); // April
     });
 
+    it("should add seconds", () => {
+      const date = new Date(2024, 0, 1, 12, 0, 0);
+      const result = add(date, 30, DATE_UNIT_TYPES.SECONDS);
+      expect(result.getSeconds()).toBe(30);
+    });
+
+    it("should add minutes", () => {
+      const date = new Date(2024, 0, 1, 12, 0, 0);
+      const result = add(date, 45, DATE_UNIT_TYPES.MINUTES);
+      expect(result.getMinutes()).toBe(45);
+    });
+
     it("should add years", () => {
       const date = new Date(2024, 5, 15);
       const result = add(date, 2, DATE_UNIT_TYPES.YEARS);
@@ -71,6 +83,20 @@ describe("Date Utils", () => {
     it("should return false when the range is in range", () => {
       const date = new Date(2024, 0, 1);
       const fromDate = new Date(2024, 0, 3);
+      const toDate = new Date(2024, 0, 5);
+      expect(isWithinRange(date, fromDate, toDate)).toBe(false);
+    })
+
+    it("should return false when date is exactly on the from boundary", () => {
+      const date = new Date(2024, 0, 1);
+      const fromDate = new Date(2024, 0, 1);
+      const toDate = new Date(2024, 0, 5);
+      expect(isWithinRange(date, fromDate, toDate)).toBe(false);
+    })
+
+    it("should return false when date is exactly on the to boundary", () => {
+      const date = new Date(2024, 0, 5);
+      const fromDate = new Date(2024, 0, 1);
       const toDate = new Date(2024, 0, 5);
       expect(isWithinRange(date, fromDate, toDate)).toBe(false);
     })
@@ -167,5 +193,3 @@ describe("Date Utils", () => {
 
   })
 });
-
-
